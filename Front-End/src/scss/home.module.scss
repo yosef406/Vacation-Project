@@ -1,0 +1,28 @@
+.cardsCollection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.expanded {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.expander {
+    display: flex;
+    flex-grow: 1;
+}
+
+.buttons {
+    margin: 10px;
+    font-size: 20px;
+
+    button {
+        padding: 5px;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

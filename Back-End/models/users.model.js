@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-    name: {
+    first_name: {
         type: String,
         required: true
     },
-    email: {
+    last_name: {
+        type: String,
+        required: true
+    },
+    userName: {
         type: String,
         unique: true,
         required: true
@@ -14,20 +18,16 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    gender: {
-        type: String,
-        enum: ["male", "female"],
-        required: true
-    },
-    phoneNumber: {
-        type: String,
-        required: true
-    },
     role: {
         type: String,
         enum: ["admin", "user"],
         default: "user"
-    }
+    },
+    following: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'vacations',
+        default: []
+    }]
 });
 
 module.exports = mongoose.model('users', UserSchema);

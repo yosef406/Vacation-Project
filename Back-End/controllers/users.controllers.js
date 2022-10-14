@@ -1,4 +1,5 @@
 const usersSchema = require('../models/users.model');
+const crypto = require('crypto')
 
 function hashPassword(password, salt) {
     // if needed for compare don't generate salt
@@ -37,24 +38,25 @@ exports.post_signup = (req, res) => {
         .catch((err) => res.status(400).json({ message: err.toString(), success: false }));
 }
 
-exports.post_login = (req, res) => {
-    let { email, password } = req.body;
+exports.post_signin = (req, res) => {
+    let { userName, password } = req.body;
 
     // select name,email,password,_id from Users
     // WHERE email == users.email 
     usersSchema
-        .findOne({ email: email }, { name: 1, email: 1, password: 1 })
+        .findOne({ userName: userName })
         .then((result) => {
             if (result != null) {
 
                 let validPass = comparePassHash(password, result.password);
-                console.log(validPass);
-                if (validPass)
+                if (validPass) {
+                    result.password = "";
                     res.status(202).json({
                         message: "login success.",
                         success: true,
                         user: result,
                     });
+                }
                 else
                     res.status(402).json({
                         message: "wrong email or password",
