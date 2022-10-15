@@ -1,5 +1,6 @@
 // imports
 const express = require('express');
+const { Exception } = require('sass');
 const VacationSchema = require('../models/vacation.model');
 
 // setups
@@ -11,6 +12,16 @@ vacationRoute.get("/", async (req, res) => {
     VacationSchema.find().sort({ startDate: 1 }).then((result) => {
         res.status(200).json({ message: "Vacations found", success: true, vacations: result })
     }).catch((err) => res.status(500).json({ message: err, success: false }));
+});
+
+vacationRoute.get("/followers", (req, res) => {
+    VacationSchema.find({ numOfFollowers: { $gte: 1 } }, { destination: 1, numOfFollowers: 1 }).then((result) => {
+        if (result != null) {
+            res.status(200).json({ message: "vacation has been updated.", success: true, data: result });
+        } else {
+            throw new Exception("cant find vacation data");
+        }
+    }).catch((err) => res.status(500).json({ message: err, success: false }))
 });
 
 vacationRoute.post("/new", async (req, res) => {

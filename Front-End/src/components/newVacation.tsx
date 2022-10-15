@@ -41,9 +41,9 @@ export default function NewVacation() {
       let url = "";
 
       if (newVac) {
-        url = "https://localhost:5000/vacations/new";
+        url = "http://localhost:5000/vacations/new";
       } else {
-        url = `https://localhost:5000/vacations/edit/` + params.id;
+        url = `http://localhost:5000/vacations/edit/` + params.id;
       }
       fetch(url, {
         method: "post",

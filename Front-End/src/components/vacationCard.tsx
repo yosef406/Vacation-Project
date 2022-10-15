@@ -18,7 +18,7 @@ function VacationCard(params: { vacation: vacationType }) {
 
   const followBtn = () => {
     const fetching = async () => {
-      await fetch(`https://localhost:5000/users/follow/${user._id}`, {
+      await fetch(`http://localhost:5000/users/follow/${user._id}`, {
         method: "post",
         body: JSON.stringify({ vacationToFollow: params.vacation._id }),
         headers: { "Content-Type": "application/json" },
@@ -35,7 +35,7 @@ function VacationCard(params: { vacation: vacationType }) {
   };
   const unFollowBtn = () => {
     const fetching = async () => {
-      await fetch(`https://localhost:5000/users/unfollow/${user._id}`, {
+      await fetch(`http://localhost:5000/users/unfollow/${user._id}`, {
         method: "post",
         body: JSON.stringify({ vacationToFollow: params.vacation._id }),
         headers: { "Content-Type": "application/json" },
@@ -70,7 +70,7 @@ function VacationCard(params: { vacation: vacationType }) {
               <button
                 onClick={() => {
                   fetch(
-                    `https://localhost:5000/vacations/${params.vacation._id}`,
+                    `http://localhost:5000/vacations/${params.vacation._id}`,
                     { method: "delete" }
                   )
                     .then((res) => res.json())

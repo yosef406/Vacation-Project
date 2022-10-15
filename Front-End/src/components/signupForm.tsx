@@ -36,7 +36,7 @@ function SignUpForm() {
       setError("");
     }
 
-    fetch("https://localhost:5000/users/signup", {
+    fetch("http://localhost:5000/users/signup", {
       method: "POST",
       body: JSON.stringify({ userName, password, first_name, last_name }),
       headers: { "Content-Type": "application/json" },

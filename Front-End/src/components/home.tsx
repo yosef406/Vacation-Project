@@ -36,9 +36,9 @@ function Home(params: { filterFollowing: boolean }) {
       if (fetching) {
         await fetch(
           params.filterFollowing
-            ? `https://localhost:5000/users/filterFollowing/${user._id}`
-            : `https://localhost:5000/vacations/`
-          // : `https://localhost:5000/vacations/?skip=${10 * (pageNumber - 1)}`
+            ? `http://localhost:5000/users/filterFollowing/${user._id}`
+            : `http://localhost:5000/vacations/`
+          // : `http://localhost:5000/vacations/?skip=${10 * (pageNumber - 1)}`
         )
           .then((res) => {
             return res.json();

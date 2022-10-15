@@ -34,7 +34,7 @@ function SignInForm() {
       setError("");
     }
 
-    fetch("https://localhost:5000/users/signin", {
+    fetch("http://localhost:5000/users/signin", {
       method: "POST",
       body: JSON.stringify({ userName, password }),
       headers: { "Content-Type": "application/json" },

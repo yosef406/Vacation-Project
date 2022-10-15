@@ -2,7 +2,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const https = require('https');
 const DataBase = require('./DataBase/DataBase');
 const usersRoutes = require('./routes/users.route');
 const vacationsRoutes = require('./routes/vacation.route');
@@ -23,10 +22,7 @@ app.use('/vacations', vacationsRoutes);
 app.get('/', (req, res) => res.json({ message: 'server is alive', success: true }));
 
 DataBase.connect().then(() => {
-    const sslServer = https.createServer({
-        key: process.env.SSL_KEY,
-        cert: process.env.SSL_CERT
-    }, app);
-    sslServer.listen(PORT, () => console.log('Server: ', `Connected to https://localhost:${PORT}`));
+
+    app.listen(PORT, () => console.log('Server: ', `Connected to http://localhost:${PORT}`));
 
 }).catch((err) => console.log('Start Error: ', err));

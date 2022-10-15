@@ -13,6 +13,7 @@ import { removeVacations } from "./data/slices/vacationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import NewVacation from "./components/newVacation";
 import { useState } from "react";
+import ChartPage from "./components/chartPage";
 
 function App() {
   const dispatch = useDispatch(); // to use redux functions
@@ -32,9 +33,15 @@ function App() {
               Home
             </Link>
             {userSignedIn && userRole === "admin" ? (
-              <Link className={style.link} to="/newVacation">
-                New Vacation
-              </Link>
+              <>
+                <Link className={style.link} to="/newVacation">
+                  New Vacation
+                </Link>
+
+                <Link className={style.link} to="/chart">
+                  Followers Chart
+                </Link>
+              </>
             ) : (
               ""
             )}
@@ -72,6 +79,7 @@ function App() {
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/newVacation" element={<NewVacation />} />
         <Route path="/editVacation/:id" element={<NewVacation />} />
+        <Route path="/chart" element={<ChartPage />} />
 
         {/* <Route path="/rerender/:path" element={<></>} /> */}
         <Route path="*" element={<h1>Error Page not found 404 </h1>} />
