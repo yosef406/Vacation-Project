@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import { getAllVacations, removeVacations } from "../data/slices/vacationSlice";
 import { useRef, useState, ChangeEvent, useEffect } from "react";
+import style from "../scss/forms.module.scss";
 
 export default function NewVacation() {
   const userSignedIn = useSelector(getUserSignInState);
@@ -106,71 +107,73 @@ export default function NewVacation() {
   return (
     <>
       {newVac ? <h1>New Vacation</h1> : <h1>Edit Vacation</h1>}
+      <div className={style.center}>
+        <div className={style.main}>
+          <div>
+            <label>destination: </label>
+            <input
+              ref={destRef}
+              type="text"
+              disabled={loading}
+              defaultValue={newVac ? "" : editVac?.destination}
+            />
+          </div>
+          <div>
+            <label>description: </label>
+            <input
+              ref={descRef}
+              type="text"
+              disabled={loading}
+              defaultValue={newVac ? "" : editVac?.description}
+            />
+          </div>
+          <div>
+            <label>image: </label>
 
-      <div>
-        <div>
-          <label>destination: </label>
-          <input
-            ref={destRef}
-            type="text"
-            disabled={loading}
-            defaultValue={newVac ? "" : editVac?.destination}
-          />
-        </div>
-        <div>
-          <label>description: </label>
-          <input
-            ref={descRef}
-            type="text"
-            disabled={loading}
-            defaultValue={newVac ? "" : editVac?.description}
-          />
-        </div>
-        <div>
-          <label>image: </label>
-
-          <input
-            type="file"
-            accept="image/*"
-            disabled={loading}
-            onChange={imageChangeBtn}
-          />
-        </div>
-        <img width={200} height={200} src={imageData} alt="not selected" />
-        <div>
-          <label>startDate: </label>
-          <input
-            ref={startDateRef}
-            disabled={loading}
-            type="date"
-            defaultValue={newVac ? "" : editVac?.startDate.split("T")[0]}
-          />
-        </div>
-        <div>
-          <label>endDate: </label>
-          <input
-            ref={endDateRef}
-            disabled={loading}
-            type="date"
-            defaultValue={newVac ? "" : editVac?.endDate.split("T")[0]}
-          />
-        </div>
-        <div>
-          <label>price: </label>
-          <input
-            ref={priceRef}
-            disabled={loading}
-            type="number"
-            defaultValue={newVac ? "" : editVac?.price}
-          />
+            <input
+              type="file"
+              accept="image/*"
+              disabled={loading}
+              onChange={imageChangeBtn}
+            />
+          </div>
+          <img src={imageData} alt="not selected" />
+          <div>
+            <label>startDate: </label>
+            <input
+              ref={startDateRef}
+              disabled={loading}
+              type="date"
+              defaultValue={newVac ? "" : editVac?.startDate.split("T")[0]}
+            />
+          </div>
+          <div>
+            <label>endDate: </label>
+            <input
+              ref={endDateRef}
+              disabled={loading}
+              type="date"
+              defaultValue={newVac ? "" : editVac?.endDate.split("T")[0]}
+            />
+          </div>
+          <div>
+            <label>price: </label>
+            <input
+              ref={priceRef}
+              disabled={loading}
+              type="number"
+              defaultValue={newVac ? "" : editVac?.price}
+            />
+          </div>
+          <div>
+            {loading ? (
+              <label>Loading...</label>
+            ) : (
+              <button onClick={updateBtn}>{newVac ? "Add" : "Update"}</button>
+            )}
+          </div>
         </div>
       </div>
-
-      {loading ? (
-        <label>Loading...</label>
-      ) : (
-        <button onClick={updateBtn}>{newVac ? "Add" : "Update"}</button>
-      )}
     </>
   );
 }

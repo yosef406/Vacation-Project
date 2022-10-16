@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { getUserSignInState } from "../data/slices/userSlice";
+import style from "../scss/forms.module.scss";
+
 function SignUpForm() {
   // setting state data
   const [loading, setLoading] = useState(false);
@@ -64,34 +66,40 @@ function SignUpForm() {
   if (userSignedIn) return <Navigate to="/" />;
   return (
     <>
-      <div>
-        <label>First Name: </label>
-        <input disabled={loading} type="text" id="fNameIn" />
-      </div>
-      <div>
-        <label>Last Name: </label>
-        <input disabled={loading} type="text" id="lNameIn" />
-      </div>
-      <div>
-        <label>UserName: </label>
-        <input disabled={loading} type="text" id="userNameIn" />
-      </div>
-      <div>
-        <label>Password: </label>
-        <input disabled={loading} type="password" id="passwordIn" />
-      </div>
-      <div>
-        <label>{error}</label>
-      </div>
-      {loading ? (
-        <label>Loading...</label>
-      ) : (
-        <div>
-          <button onClick={signUpBtn}>Sign Up</button>
-          <label>or</label>
-          <Link to="/signin">Sign In</Link>
+      <div className={style.center}>
+        <div className={style.main}>
+          <div>
+            <label>First Name: </label>
+            <input disabled={loading} type="text" id="fNameIn" />
+          </div>
+          <div>
+            <label>Last Name: </label>
+            <input disabled={loading} type="text" id="lNameIn" />
+          </div>
+          <div>
+            <label>UserName: </label>
+            <input disabled={loading} type="text" id="userNameIn" />
+          </div>
+          <div>
+            <label>Password: </label>
+            <input disabled={loading} type="password" id="passwordIn" />
+          </div>
+          <div>
+            <label>{error}</label>
+          </div>
+          {loading ? (
+            <label>Loading...</label>
+          ) : (
+            <div>
+              <button onClick={signUpBtn}>Sign Up</button>
+              <label>or</label>
+              <Link to="/signin" className={style.Link}>
+                Sign In
+              </Link>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 }

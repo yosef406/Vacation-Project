@@ -1,0 +1,54 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // flex-grow: 1;
+    background-color: wheat;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 24px;
+
+    div {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        label {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 5px;
+            // margin: 10px;
+        }
+
+        .Link {
+            background-color: whitesmoke;
+            padding: 5px;
+            border-radius: 5px;
+            color: black;
+            border: solid grey 1px
+        }
+
+        .Link:hover {
+            background-color: rgb(204, 204, 204);
+        }
+
+    }
+
+    img {
+        height: 200px;
+        width: 300px;
+        border-radius: 5px;
+    }
+}
+
+.center {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}

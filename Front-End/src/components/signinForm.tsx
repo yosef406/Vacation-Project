@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { addUser, getUserSignInState } from "../data/slices/userSlice";
 import { removeVacations } from "../data/slices/vacationSlice";
-import style from "../scss/signInForm.module.scss";
+import style from "../scss/forms.module.scss";
 
 function SignInForm() {
   // setting state data
@@ -66,29 +66,31 @@ function SignInForm() {
 
   return (
     <>
-      <div className={style.main}>
-        <div>
-          <label>UserName: </label>
-          <input disabled={loading} type="text" id="userNameIn" />
-        </div>
-        <div>
-          <label>Password: </label>
-          <input disabled={loading} type="password" id="passwordIn" />
-        </div>
-        <div>
-          <label>{error}</label>
-        </div>
-        {loading ? (
-          <label>Loading...</label>
-        ) : (
+      <div className={style.center}>
+        <div className={style.main}>
           <div>
-            <button onClick={signInBtn}>Sign In</button>
-            <label>or</label>
-            <Link className={style.Link} to="/signup">
-              Sign Up
-            </Link>
+            <label>UserName: </label>
+            <input disabled={loading} type="text" id="userNameIn" />
           </div>
-        )}
+          <div>
+            <label>Password: </label>
+            <input disabled={loading} type="password" id="passwordIn" />
+          </div>
+          <div>
+            <label>{error}</label>
+          </div>
+          {loading ? (
+            <label>Loading...</label>
+          ) : (
+            <div>
+              <button onClick={signInBtn}>Sign In</button>
+              <label>or</label>
+              <Link className={style.Link} to="/signup">
+                Sign Up
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
