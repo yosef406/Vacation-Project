@@ -12,8 +12,8 @@ clone the repository or download with a zip file.<br>
 
 1. navigate to the folder where you installed the repo.
 2. open using Visual Studio Code by using the terminal command `code .`
-3. run the server by navigating to the folder using the terminal `cd back-end` then activating it with `npm run start`.
-4. run the client by navigating to the folder using a new terminal window `cd front-end` then activating it with `npm run start`.
+3. run the server by navigating to the folder using the terminal `cd back-end` then installing packages `npm install` then activating it with `npm run start`.
+4. run the client by navigating to the folder using a new terminal window `cd front-end` then installing packages `npm install` then activating it with `npm run start`.
 
 ## using the project
 
