@@ -1,6 +1,5 @@
 // imports
 const express = require('express');
-const { Exception } = require('sass');
 const VacationSchema = require('../models/vacation.model');
 
 // setups
@@ -19,7 +18,7 @@ vacationRoute.get("/followers", (req, res) => {
         if (result != null) {
             res.status(200).json({ message: "vacation has been updated.", success: true, data: result });
         } else {
-            throw new Exception("cant find vacation data");
+            res.status(500).json({ message: "cant find vacation data", success: false })
         }
     }).catch((err) => res.status(500).json({ message: err, success: false }))
 });
